@@ -42,7 +42,8 @@ class _MyAppState extends State<MyApp> {
                   productInfo: '<Enter Product Name>', // Enter Product Name
                   transactionId:
                       orderId, //Every Transaction should have a unique ID
-                  userCredentials: 'XHqp4X:<Enter Customer Email>',
+                  userCredentials:
+                      '<Merchant Key>:<Enter Customer Email or USER ID>',
                   userPhoneNumber:
                       '<Enter Customer PhoneNumber>'); //Phone Number should be 10 digits. Please validate it before passing else it will throw error.
               if (response['status'] == 'success') handlePaymentSuccess(amount);
