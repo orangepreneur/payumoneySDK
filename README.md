@@ -3,7 +3,7 @@
 
 # Flutter PayUMoney Pro SDK
 
-  
+![Build Passing Badge](https://img.shields.io/badge/build-Passing-brightgreen) ![Pub Version](https://img.shields.io/pub/v/payumoney_pro_unofficial?label=Version) ![Flutter Version](https://img.shields.io/badge/Flutter-v2.12-blue) ![Platform Supported](https://img.shields.io/badge/Platform-Android-lightgrey)
 
 ### Flutter Plugin to implement PayUMoney Latest Checkout SDK in Android App.
 
