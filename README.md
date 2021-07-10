@@ -101,7 +101,7 @@ Run this command in project terminal to add dependency
   
 
 or add manually to **pubspecs.yaml**   
-```payumoney_pro_unofficial: ^0.0.3```
+```payumoney_pro_unofficial: ^0.0.4```
 
   
   
