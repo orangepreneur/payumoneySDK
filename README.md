@@ -41,7 +41,7 @@ Screenshots
 
 ### Currently Support Android Platform only. iOS Soon
 
-### Android Implementation
+### Step 1:  Android Implementation
 There are few steps you need to follow to implement PayUMoney SDK:
 
 - Open file **android/app/build.gradle** in your flutter project and update **minSdkVersion** under "defaultConfig" to **21** (if greater than leave)
@@ -84,7 +84,7 @@ android:icon="@mipmap/ic_launcher">
 
   
 
-### Flutter Implementation
+### Step 2: Flutter Implementation
 
   
 
