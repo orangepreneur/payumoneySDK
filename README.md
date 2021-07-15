@@ -2,7 +2,7 @@
 
 ![Build Passing Badge](https://img.shields.io/badge/build-Passing-brightgreen) ![Pub Version](https://img.shields.io/pub/v/payumoney_pro_unofficial?label=Version) ![Flutter Version](https://img.shields.io/badge/Flutter-v2.2.3-blue) ![Platform Supported](https://img.shields.io/badge/Platform%20Supported-Android%20%7C%20iOS-red)
 
-### Flutter Plugin to implement PayUMoney Latest Checkout SDK in Android & iOS App.
+### Flutter Plugin to implement PayUMoney Latest CheckoutPro SDK in Android & iOS App.
 
 Screenshots
 
@@ -19,8 +19,6 @@ Screenshots
 ![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/netbanking.jpg)
 
 ## Note: This Plugin is in initial release. Please test it well before using it in production app.
-
-### Currently Support Android Platform only. iOS Soon
 
 ### Step 1: Android Implementation
 
@@ -88,8 +86,11 @@ Future<void> initializePayment() async{
 		merchantKey: '<Merchant Key>',
 		merchantSalt: '<Merchant Salt Version 1>',
 		amount: '<Amount in Rs>',
+		hashUrl:'<Checksum URL to generate dynamic hashes>', //nodejs code is included. Host the code and update its url here.
 		productInfo: '<Product Name>',
 		transactionId: '<Unique ID>',
+		showExitConfirmation:true,
+		showLogs:false, // true for debugging, false for production
 		userCredentials:'<Merchant Key>:' + '<Customer Email or User ID>',
 		userPhoneNumber: phone
 		);

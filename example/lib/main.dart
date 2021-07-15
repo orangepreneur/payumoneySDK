@@ -33,24 +33,23 @@ class _MyAppState extends State<MyApp> {
               // Amount is in rs. Enter 100 for Rs100.
               // Every Transaction should have a unique ID
               // Phone Number should be 10 digits. Please validate it before passing else it will throw error.
-
+              // hashUrl is required. check github documentation for nodejs code.
               var response = await PayumoneyProUnofficial.payUParams(
-                  email: 'contact@orangewp.com',
-                  firstName: "Mukesh",
-                  merchantName: 'Mukesh Joshi',
+                  email: 'test@example.com',
+                  firstName: "Orange",
+                  merchantName: 'Orange Digitals',
                   isProduction: true,
                   merchantKey:
-                      'jqY5fz', //You will find these details from payumoney dashboard
-                  merchantSalt: 'mXUZ4W5R',
+                      'merchantKey', //You will find these details from payumoney dashboard
+                  merchantSalt: 'merchantSalt',
                   amount: amount,
-                  productInfo: 'Wallet Recharge', // Enter Product Name
+                  productInfo: 'iPhone 12', // Enter Product Name
                   transactionId:
                       orderId, //Every Transaction should have a unique ID
-                  hashUrl:
-                      'https://us-central1-mukesh-joshi.cloudfunctions.net/payUMoney_CheckoutPro_Hash',
-                  userCredentials: 'jqY5fz:contact@orangewp.com',
+                  hashUrl: '',
+                  userCredentials: 'merchantKey:test@example.com',
                   showLogs: true,
-                  userPhoneNumber: '6398259963');
+                  userPhoneNumber: '9999999999');
 
               if (response['status'] == PayUParams.success)
                 handlePaymentSuccess(amount);
