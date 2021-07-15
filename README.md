@@ -68,7 +68,7 @@ Run this command in project terminal to add dependency
 
 or add manually to **pubspecs.yaml**
 
-`payumoney_pro_unofficial: ^0.0.8`
+`payumoney_pro_unofficial: ^0.0.9`
 
 Get latest packages
 
@@ -157,12 +157,12 @@ print(errorMessage);
 **Tested Devices:**
 | Device Name | Status |
 |--|--|
-| iPhoneX | :heavy_check_mark: |
-| iPhone 11 | :heavy_check_mark: |
-| iPhone 12 | :heavy_check_mark: |
-| iPhone 12 mini | :heavy_check_mark: |
-|Google Pixel| :heavy_check_mark: |
-|Android Emulator(v10)| :heavy_check_mark: |
+| iPhoneX | :white_check_mark: |
+| iPhone 11 | :white_check_mark: |
+| iPhone 12 | :white_check_mark: |
+| iPhone 12 mini | :white_check_mark: |
+|Google Pixel| :white_check_mark: |
+|Android Emulator(v10)| :white_check_mark: |
 
 ### Pro Tip:
 
