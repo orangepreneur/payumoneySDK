@@ -15,6 +15,7 @@ class PayumoneyProUnofficial {
     required String transactionId,
     required String firstName,
     required String email,
+    required String hash,
     String merchantName = "Payu",
     bool showExitConfirmation = true,
     String successURL =
@@ -38,10 +39,10 @@ class PayumoneyProUnofficial {
         'showExitConfirmation': showExitConfirmation,
         'successURL': successURL,
         'failureURL': failureURL,
+        'hash': hash,
         'userCredentials': userCredentials,
         'merchantSalt': merchantSalt
       });
-      print(data);
       return data;
     } catch (error) {
       debugPrint(error.toString());
@@ -49,5 +50,10 @@ class PayumoneyProUnofficial {
       final errorResponse = {"status": "failed", "message": "payment canceled"};
       return errorResponse;
     }
+  }
+
+  static Future<void> printHello() async {
+    final String string = await _channel.invokeMethod("printHello");
+    print(string);
   }
 }

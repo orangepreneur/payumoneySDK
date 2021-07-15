@@ -21,3 +21,5 @@ flutter:
       android:
         package: com.example.payumoney_pro_unofficial
         pluginClass: PayumoneyProUnofficialPlugin
+      ios:
+        pluginClass: PayumoneyProUnofficialPlugin

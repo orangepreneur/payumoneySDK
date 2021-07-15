@@ -156,7 +156,6 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
                   String hashData = valueMap.get(PayUCheckoutProConstants.CP_HASH_STRING);
                   if (!TextUtils.isEmpty(hashName) && !TextUtils.isEmpty(hashData)) {
                     String hash = calculateHash(hashData + salt);
-                    Log.i(TAG,"Generating Hash for :"+hashName+"  "+hashData +"  "+hash);
                     HashMap<String, String> dataMap = new HashMap<>();
                     dataMap.put(hashName, hash);
                     hashGenerationListener.onHashGenerated(dataMap);

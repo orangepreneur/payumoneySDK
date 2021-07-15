@@ -29,23 +29,42 @@ class _MyAppState extends State<MyApp> {
             onPressed: () async {
               String orderId = DateTime.now().millisecondsSinceEpoch.toString();
               final String amount = "1"; //Amount is in rs. Enter 100 for Rs100.
+              // var response = await PayumoneyProUnofficial.payUParams(
+              //     email: '<Enter Customer Email>',
+              //     firstName: "<Enter Customer Name>",
+              //     merchantName: '<Add Your Merchant Name>',
+              //     isProduction: true,
+              //     merchantKey:
+              //         '<Add Your Merchant Key>', //You will find these details from payumoney dashboard
+              //     merchantSalt:
+              //         '<Add Your Merchant Salt Version 1>', //You will find these details from payumoney dashboard
+              //     amount: amount,
+              //     productInfo: '<Enter Product Name>', // Enter Product Name
+              //     transactionId:
+              //         orderId, //Every Transaction should have a unique ID
+              //     userCredentials:
+              //         '<Merchant Key>:<Enter Customer Email or USER ID>',
+              //     userPhoneNumber:
+              //         '<Enter Customer PhoneNumber>'); //Phone Number should be 10 digits. Please validate it before passing else it will throw error.
+
               var response = await PayumoneyProUnofficial.payUParams(
-                  email: '<Enter Customer Email>',
-                  firstName: "<Enter Customer Name>",
-                  merchantName: '<Add Your Merchant Name>',
+                  email: 'contact@orangewp.com',
+                  firstName: "Mukesh",
+                  merchantName: 'Mukesh Joshi',
                   isProduction: true,
                   merchantKey:
-                      '<Add Your Merchant Key>', //You will find these details from payumoney dashboard
+                      'jExGmsbk', //You will find these details from payumoney dashboard
                   merchantSalt:
-                      '<Add Your Merchant Salt Version 1>', //You will find these details from payumoney dashboard
+                      '6M9kkJP0WB', //You will find these details from payumoney dashboard
                   amount: amount,
-                  productInfo: '<Enter Product Name>', // Enter Product Name
+                  productInfo: 'Wallet Recharge', // Enter Product Name
                   transactionId:
                       orderId, //Every Transaction should have a unique ID
-                  userCredentials:
-                      '<Merchant Key>:<Enter Customer Email or USER ID>',
-                  userPhoneNumber:
-                      '<Enter Customer PhoneNumber>'); //Phone Number should be 10 digits. Please validate it before passing else it will throw error.
+                  hash:
+                      'https://us-central1-mukesh-joshi.cloudfunctions.net/payUMoney_CheckoutPro_Hash',
+                  userCredentials: 'g0nGFe03:contact@orangewp.com',
+                  userPhoneNumber: '6398259963');
+
               if (response['status'] == 'success') handlePaymentSuccess(amount);
               if (response['status'] == 'failed')
                 handlePaymentFailure(amount, response['message']);
