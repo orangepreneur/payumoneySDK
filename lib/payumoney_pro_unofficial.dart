@@ -1,8 +1,11 @@
+// Flutter plugin to implement PayUMoney CheckoutPro SDK in Android & iOS App
+// Developed by Mukesh Joshi
+// https://iammukesh.com
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// class to Implement PayUMoney CheckoutPro SDK in Android & iOS App
 class PayumoneyProUnofficial {
   // method channel allow us to run platform specific code.
   static const MethodChannel _channel =
