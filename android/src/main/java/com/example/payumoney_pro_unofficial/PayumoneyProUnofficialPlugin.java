@@ -114,7 +114,7 @@ if(this.showLogs){
       PayUCheckoutProConfig payUCheckoutProConfig = new PayUCheckoutProConfig(); 
       payUCheckoutProConfig.setMerchantName((String)  call.argument("merchantName")); 
       payUCheckoutProConfig.setShowExitConfirmationOnCheckoutScreen((boolean)  call.argument("showExitConfirmation")); //hide back button dialog 
-      startPayment(this.payUPaymentParams,payUCheckoutProConfig,"g0nGFe03");
+      startPayment(this.payUPaymentParams,payUCheckoutProConfig,(String)  call.argument("merchantSalt"));
 
 
     } catch (Exception e) {
@@ -136,7 +136,7 @@ if(this.showLogs){
                 @Override
                 public void onPaymentSuccess(Object response) {
                   if(logging){
-                 Log.i(TAG,"Payment Successfull");
+                 Log.i(TAG,"Payment Successful");
                   }
                   //Cast response object to HashMap
                   HashMap<String,Object> result = (HashMap<String, Object>) response;

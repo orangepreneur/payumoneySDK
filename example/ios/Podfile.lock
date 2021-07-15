@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.4.3)
   - Flutter (1.0.0)
   - PayUIndia-AssetLibrary (2.2.0)
   - PayUIndia-CheckoutPro (2.4.0):
@@ -20,6 +21,7 @@ PODS:
     - PayUIndia-Networking (~> 2.0)
     - Socket.IO-Client-Swift (= 15.1.0)
   - payumoney_pro_unofficial (0.0.1):
+    - Alamofire
     - Flutter
     - PayUIndia-CheckoutPro
   - Socket.IO-Client-Swift (15.1.0):
@@ -32,6 +34,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - PayUIndia-AssetLibrary
     - PayUIndia-CheckoutPro
     - PayUIndia-CheckoutProBase
@@ -51,6 +54,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/payumoney_pro_unofficial/ios"
 
 SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   PayUIndia-AssetLibrary: 9b85c00a2635d3ac240949cd32221d52dd08dab7
   PayUIndia-CheckoutPro: 925e490bfd1489f5c563587fd02aee43c4447496
@@ -61,10 +65,10 @@ SPEC CHECKSUMS:
   PayUIndia-PayUParams: fbd61b156202fc141709d192edd131729cb5b934
   PayUIndia-PG-SDK: 6aeda561fdf58471485b9abb16291e4256dc8ec9
   PayUIndia-UPICore: 3c9281c94b00f7c896b40a2cd180466bf1dd8015
-  payumoney_pro_unofficial: 93605769f1ce3e09aedc8c9aacbe0d8a7dcaf4c6
+  payumoney_pro_unofficial: 7b38ca90cf91b059756c5e55f82eb8bd3c629d84
   Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: 9dca49cd8f9a372a1a9f78be97f751bf6edfef65
+PODFILE CHECKSUM: 0e74b5e165c0fcfaf66ba226b8417dad97261cb3
 
 COCOAPODS: 1.10.1

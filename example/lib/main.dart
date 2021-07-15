@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
             child: Text("Make Payment"),
             onPressed: () async {
               String orderId = DateTime.now().millisecondsSinceEpoch.toString();
-              final String amount = "0.50";
+              final String amount = "1";
 
               // Amount is in rs. Enter 100 for Rs100.
               // Every Transaction should have a unique ID
@@ -36,23 +36,25 @@ class _MyAppState extends State<MyApp> {
 
               var response = await PayumoneyProUnofficial.payUParams(
                   email: 'contact@orangewp.com',
-                  firstName: "Mukesh Joshi",
-                  merchantName: 'Payu',
+                  firstName: "Mukesh",
+                  merchantName: 'Mukesh Joshi',
                   isProduction: true,
                   merchantKey:
-                      '3TnMpV', //You will find these details from payumoney dashboard
+                      'jqY5fz', //You will find these details from payumoney dashboard
+                  merchantSalt: 'mXUZ4W5R',
                   amount: amount,
                   productInfo: 'Wallet Recharge', // Enter Product Name
                   transactionId:
                       orderId, //Every Transaction should have a unique ID
                   hashUrl:
                       'https://us-central1-mukesh-joshi.cloudfunctions.net/payUMoney_CheckoutPro_Hash',
-                  userCredentials: '3TnMpV:contact@orangewp.com',
+                  userCredentials: 'jqY5fz:contact@orangewp.com',
                   showLogs: true,
                   userPhoneNumber: '6398259963');
 
-              if (response['status'] == 'success') handlePaymentSuccess(amount);
-              if (response['status'] == 'failed')
+              if (response['status'] == PayUParams.success)
+                handlePaymentSuccess(amount);
+              if (response['status'] == PayUParams.failed)
                 handlePaymentFailure(amount, response['message']);
             },
           ),

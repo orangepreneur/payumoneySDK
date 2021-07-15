@@ -1,6 +1,6 @@
 name: payumoney_pro_unofficial
 description: Flutter Plugin to implement PayUMoney Latest Checkout SDK in Android App.
-version: 0.0.5
+version: 0.0.7
 homepage: https://iammukesh.com
 repository: https://github.com/orangepreneur/payumoneySDK
 environment:
