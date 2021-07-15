@@ -53,7 +53,7 @@ Run this command in project terminal to add dependency
 `flutter pub add payumoney_pro_unofficial`
 
 or add manually to **pubspecs.yaml**  
-`payumoney_pro_unofficial: ^0.0.7`
+`payumoney_pro_unofficial: ^0.0.8`
 
 Get latest packages
 `flutter pub get `
