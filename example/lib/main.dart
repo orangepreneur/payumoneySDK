@@ -6,6 +6,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  // Example app to test the payumoney plugin
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -27,11 +28,11 @@ class _MyAppState extends State<MyApp> {
           child: ElevatedButton(
             child: Text("Make Payment"),
             onPressed: () async {
+              // // Every Transaction should have a unique ID. I am using timestamp as transactionid. Because its always unique :)
               String orderId = DateTime.now().millisecondsSinceEpoch.toString();
+              // Amount is in rs. Enter 100 for Rs100.
               final String amount = "1";
 
-              // Amount is in rs. Enter 100 for Rs100.
-              // Every Transaction should have a unique ID
               // Phone Number should be 10 digits. Please validate it before passing else it will throw error.
               // hashUrl is required. check github documentation for nodejs code.
               var response = await PayumoneyProUnofficial.payUParams(
@@ -50,9 +51,10 @@ class _MyAppState extends State<MyApp> {
                   userCredentials: 'merchantKey:test@example.com',
                   showLogs: true,
                   userPhoneNumber: '9999999999');
-
+              // handling success response
               if (response['status'] == PayUParams.success)
                 handlePaymentSuccess(amount);
+              // handling failure response
               if (response['status'] == PayUParams.failed)
                 handlePaymentFailure(amount, response['message']);
             },
@@ -62,11 +64,13 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+// Function to implement business login on payment success
   handlePaymentSuccess(String amount) {
     print("Success");
     // Implement your logic here for successful payment.
   }
 
+// Function to implement business login on payment failure
   handlePaymentFailure(String amount, String error) {
     print("Failed");
     print(error);
