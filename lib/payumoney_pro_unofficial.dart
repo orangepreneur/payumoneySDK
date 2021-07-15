@@ -15,15 +15,13 @@ class PayumoneyProUnofficial {
     required String transactionId,
     required String firstName,
     required String email,
-    required String hash,
-    String merchantName = "Payu",
+    required String hashUrl,
+    String merchantName = PayUParams.merchantName,
     bool showExitConfirmation = true,
-    String successURL =
-        "https://www.payumoney.com/mobileapp/payumoney/success.php",
-    String failureURL =
-        "https://www.payumoney.com/mobileapp/payumoney/failure.php",
+    bool showLogs = false,
+    String successURL = PayUParams.successURL,
+    String failureURL = PayUParams.failureURL,
     required String userCredentials,
-    required String merchantSalt,
   }) async {
     try {
       final data = await _channel.invokeMethod('payUParams', {
@@ -35,13 +33,13 @@ class PayumoneyProUnofficial {
         'transactionId': transactionId,
         'firstName': firstName,
         'email': email,
+        'showLogs': showLogs,
         'merchantName': merchantName,
         'showExitConfirmation': showExitConfirmation,
         'successURL': successURL,
         'failureURL': failureURL,
-        'hash': hash,
+        'hash': hashUrl,
         'userCredentials': userCredentials,
-        'merchantSalt': merchantSalt
       });
       return data;
     } catch (error) {
@@ -51,9 +49,12 @@ class PayumoneyProUnofficial {
       return errorResponse;
     }
   }
+}
 
-  static Future<void> printHello() async {
-    final String string = await _channel.invokeMethod("printHello");
-    print(string);
-  }
+class PayUParams {
+  static const successURL =
+      "https://www.payumoney.com/mobileapp/payumoney/success.php";
+  static const failureURL =
+      "https://www.payumoney.com/mobileapp/payumoney/failure.php";
+  static const merchantName = "Payu";
 }

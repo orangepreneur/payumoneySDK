@@ -21,48 +21,34 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter PayUMoney Checkout Pro'),
+          title: const Text('PayUMoney Checkout Pro'),
         ),
         body: Center(
           child: ElevatedButton(
             child: Text("Make Payment"),
             onPressed: () async {
               String orderId = DateTime.now().millisecondsSinceEpoch.toString();
-              final String amount = "1"; //Amount is in rs. Enter 100 for Rs100.
-              // var response = await PayumoneyProUnofficial.payUParams(
-              //     email: '<Enter Customer Email>',
-              //     firstName: "<Enter Customer Name>",
-              //     merchantName: '<Add Your Merchant Name>',
-              //     isProduction: true,
-              //     merchantKey:
-              //         '<Add Your Merchant Key>', //You will find these details from payumoney dashboard
-              //     merchantSalt:
-              //         '<Add Your Merchant Salt Version 1>', //You will find these details from payumoney dashboard
-              //     amount: amount,
-              //     productInfo: '<Enter Product Name>', // Enter Product Name
-              //     transactionId:
-              //         orderId, //Every Transaction should have a unique ID
-              //     userCredentials:
-              //         '<Merchant Key>:<Enter Customer Email or USER ID>',
-              //     userPhoneNumber:
-              //         '<Enter Customer PhoneNumber>'); //Phone Number should be 10 digits. Please validate it before passing else it will throw error.
+              final String amount = "0.50";
+
+              // Amount is in rs. Enter 100 for Rs100.
+              // Every Transaction should have a unique ID
+              // Phone Number should be 10 digits. Please validate it before passing else it will throw error.
 
               var response = await PayumoneyProUnofficial.payUParams(
                   email: 'contact@orangewp.com',
-                  firstName: "Mukesh",
-                  merchantName: 'Mukesh Joshi',
+                  firstName: "Mukesh Joshi",
+                  merchantName: 'Payu',
                   isProduction: true,
                   merchantKey:
-                      'jExGmsbk', //You will find these details from payumoney dashboard
-                  merchantSalt:
-                      '6M9kkJP0WB', //You will find these details from payumoney dashboard
+                      '3TnMpV', //You will find these details from payumoney dashboard
                   amount: amount,
                   productInfo: 'Wallet Recharge', // Enter Product Name
                   transactionId:
                       orderId, //Every Transaction should have a unique ID
-                  hash:
+                  hashUrl:
                       'https://us-central1-mukesh-joshi.cloudfunctions.net/payUMoney_CheckoutPro_Hash',
-                  userCredentials: 'g0nGFe03:contact@orangewp.com',
+                  userCredentials: '3TnMpV:contact@orangewp.com',
+                  showLogs: true,
                   userPhoneNumber: '6398259963');
 
               if (response['status'] == 'success') handlePaymentSuccess(amount);

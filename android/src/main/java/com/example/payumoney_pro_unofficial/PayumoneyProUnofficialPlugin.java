@@ -45,7 +45,8 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
   private MethodChannel channel;
   private Activity activity;
   private MethodChannel.Result mainResult;
-  String paymentHash="asdasdas";
+  Boolean showLogs=false;
+  String paymentHash="";
   PayUPaymentParams payUPaymentParams =null;
   PayUPaymentParams.Builder builder = new PayUPaymentParams.Builder();
   @Override
@@ -66,16 +67,33 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
 
 
   private void buildPaymentParams( MethodCall call){
-    Log.i(TAG,"Building payment parameters");
+    
+    this.showLogs = (boolean) call.argument("showLogs");
+    if(this.showLogs){
+      Log.i(TAG,"=======================");
+      Log.i(TAG,"Debug Mode is Enabled");
+      Log.i(TAG,"=======================");
+      Log.i(TAG,"Parameter passed to SDK");
+      Log.i(TAG,"Amount: " + call.argument("amount"));
+      Log.i(TAG,"isProduction:" + call.argument("isProduction"));
+      Log.i(TAG,"productInfo:" + call.argument("productInfo"));
+      Log.i(TAG,"merchantKey:" + call.argument("merchantKey"));
+      Log.i(TAG,"userPhoneNumber:" + call.argument("userPhoneNumber"));
+      Log.i(TAG,"transactionId:" + call.argument("transactionId"));
+      Log.i(TAG,"firstName:" + call.argument("firstName"));
+      Log.i(TAG,"email:" + call.argument("email"));
+      Log.i(TAG,"successURL:" + call.argument("successURL"));
+      Log.i(TAG,"failureURL:" + call.argument("failureURL"));
+      Log.i(TAG,"userCredentials:" + call.argument("userCredentials"));
+    }
     HashMap<String, Object> additionalParams = new HashMap<>();
     additionalParams.put(PayUCheckoutProConstants.CP_UDF1, "udf1");
     additionalParams.put(PayUCheckoutProConstants.CP_UDF2, "udf2");
     additionalParams.put(PayUCheckoutProConstants.CP_UDF3, "udf3");
     additionalParams.put(PayUCheckoutProConstants.CP_UDF4, "udf4");
     additionalParams.put(PayUCheckoutProConstants.CP_UDF5, "udf5");
-//    additionalParams.put(PayUCheckoutProConstants.CP_PAYMENT_HASH, call.argument("hash"));
-//    additionalParams.put(PayUCheckoutProConstants.CP_PAYMENT_RELATED_DETAILS_FOR_MOBILE_SDK, call.argument("paymentRelatedHash"));
-    builder.setAmount((String) call.argument("amount"))
+
+  builder.setAmount((String) call.argument("amount"))
 .setIsProduction((boolean) call.argument("isProduction"))
         .setProductInfo((String) call.argument("productInfo"))
         .setKey((String)  call.argument("merchantKey"))
@@ -90,13 +108,17 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
     try {
       this.payUPaymentParams = builder.build();
 
-      Log.i(TAG,"Starting payment process");
-      startPayment(this.payUPaymentParams,(String)  call.argument("merchantSalt"));
+if(this.showLogs){
+        Log.i(TAG,"Starting payment process");
+}
+      startPayment(this.payUPaymentParams,"g0nGFe03");
 
 
     } catch (Exception e) {
       mainResult.error("ERROR", e.getMessage(), null);
+      if(this.showLogs){
       Log.d(TAG, "Error : " + e.toString());
+      }
     }
   }
 
@@ -108,7 +130,10 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
 
                 @Override
                 public void onPaymentSuccess(Object response) {
-                  Log.i(TAG,"Payment Successfull");
+       
+                  if(this.showLogs){
+                 Log.i(TAG,"Payment Successfull");
+                  }
                   //Cast response object to HashMap
                   HashMap<String,Object> result = (HashMap<String, Object>) response;
                   String payuResponse = (String)result.get(PayUCheckoutProConstants.CP_PAYU_RESPONSE);
@@ -119,7 +144,10 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
                 }
                 @Override
                 public void onPaymentFailure(Object response) {
-                  Log.i(TAG,"Payment Failed");
+                  if(this.showLogs){
+                    Log.e(TAG,"Payment Failed");
+                  }
+                  
                   //Cast response object to HashMap
                   HashMap<String,Object> result = (HashMap<String, Object>) response;
                   String payuResponse = (String)result.get(PayUCheckoutProConstants.CP_PAYU_RESPONSE);
@@ -130,7 +158,10 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
                 }
                 @Override
                 public void onPaymentCancel(boolean isTxnInitiated) {
-                  Log.i(TAG,"Payment Cancelled");
+                  
+                  if(this.showLogs){
+                    Log.e(TAG,"Payment Cancelled");
+                  }
                   HashMap<String,Object> result =new HashMap<String, Object>();
                   result.put("status", "failed");
                   result.put("message","Payment canceled");
@@ -139,7 +170,9 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
                 @Override
                 public void onError(ErrorResponse errorResponse) {
                   String errorMessage = errorResponse.getErrorMessage();
-                  Log.e(TAG,errorMessage);
+                  if(this.showLogs){
+                    Log.e(TAG,errorMessage);
+                  }
                   HashMap<String,Object> result =new HashMap<String, Object>();
                   result.put("status", "failed");
                   result.put("message",errorMessage);
@@ -157,6 +190,12 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
                   if (!TextUtils.isEmpty(hashName) && !TextUtils.isEmpty(hashData)) {
                     String hash = calculateHash(hashData + salt);
                     HashMap<String, String> dataMap = new HashMap<>();
+                     if(this.showLogs){
+                      Log.i(TAG,"----------");
+                      Log.i(TAG,"Generating Hash for: "+hashName);
+                      Log.i(TAG,"String: " + hashData);
+                      Log.i(TAG,"Hash: "+ hash);
+                    }
                     dataMap.put(hashName, hash);
                     hashGenerationListener.onHashGenerated(dataMap);
                   }
