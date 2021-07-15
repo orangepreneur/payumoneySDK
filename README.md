@@ -6,17 +6,7 @@
 
 Screenshots
 
-![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/main.jpg)
-
-![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/paymentpage.jpg)
-
-![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/card.jpg)
-
-![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/upi.jpg)
-
-![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/wallets.jpg)
-
-![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/netbanking.jpg)
+![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/main.jpg)![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/paymentpage.jpg)![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/card.jpg)![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/upi.jpg)![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/wallets.jpg)![screenshot](https://github.com/orangepreneur/payumoneySDK/blob/master/screenshots/netbanking.jpg)
 
 ## Note: This Plugin is in initial release. Please test it well before using it in production app.
 
