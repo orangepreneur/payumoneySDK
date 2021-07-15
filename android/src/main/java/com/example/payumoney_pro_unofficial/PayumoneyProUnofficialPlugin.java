@@ -111,7 +111,10 @@ public class PayumoneyProUnofficialPlugin implements FlutterPlugin, MethodCallHa
 if(this.showLogs){
         Log.i(TAG,"Starting payment process");
 }
-      startPayment(this.payUPaymentParams,"g0nGFe03");
+      PayUCheckoutProConfig payUCheckoutProConfig = new PayUCheckoutProConfig(); 
+      payUCheckoutProConfig.setMerchantName((String)  call.argument("merchantName")); 
+      payUCheckoutProConfig.setShowExitConfirmationOnCheckoutScreen((boolean)  call.argument("showExitConfirmation")); //hide back button dialog 
+      startPayment(this.payUPaymentParams,payUCheckoutProConfig,"g0nGFe03");
 
 
     } catch (Exception e) {
@@ -122,16 +125,17 @@ if(this.showLogs){
     }
   }
 
-  private void startPayment(PayUPaymentParams payUPaymentParams,final String salt){
+  private void startPayment(PayUPaymentParams payUPaymentParams,PayUCheckoutProConfig payUCheckoutProConfig,final String salt){
+      Boolean logging = this.showLogs;
       PayUCheckoutPro.open(
               activity,
               payUPaymentParams,
+              payUCheckoutProConfig,
               new PayUCheckoutProListener() {
 
                 @Override
                 public void onPaymentSuccess(Object response) {
-       
-                  if(this.showLogs){
+                  if(logging){
                  Log.i(TAG,"Payment Successfull");
                   }
                   //Cast response object to HashMap
@@ -144,7 +148,7 @@ if(this.showLogs){
                 }
                 @Override
                 public void onPaymentFailure(Object response) {
-                  if(this.showLogs){
+                  if(logging){
                     Log.e(TAG,"Payment Failed");
                   }
                   
@@ -158,8 +162,7 @@ if(this.showLogs){
                 }
                 @Override
                 public void onPaymentCancel(boolean isTxnInitiated) {
-                  
-                  if(this.showLogs){
+                  if(logging){
                     Log.e(TAG,"Payment Cancelled");
                   }
                   HashMap<String,Object> result =new HashMap<String, Object>();
@@ -170,7 +173,7 @@ if(this.showLogs){
                 @Override
                 public void onError(ErrorResponse errorResponse) {
                   String errorMessage = errorResponse.getErrorMessage();
-                  if(this.showLogs){
+                  if(logging){
                     Log.e(TAG,errorMessage);
                   }
                   HashMap<String,Object> result =new HashMap<String, Object>();
@@ -190,7 +193,7 @@ if(this.showLogs){
                   if (!TextUtils.isEmpty(hashName) && !TextUtils.isEmpty(hashData)) {
                     String hash = calculateHash(hashData + salt);
                     HashMap<String, String> dataMap = new HashMap<>();
-                     if(this.showLogs){
+                     if(logging){
                       Log.i(TAG,"----------");
                       Log.i(TAG,"Generating Hash for: "+hashName);
                       Log.i(TAG,"String: " + hashData);

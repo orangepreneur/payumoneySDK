@@ -44,7 +44,6 @@ class PayumoneyProUnofficial {
       return data;
     } catch (error) {
       debugPrint(error.toString());
-
       final errorResponse = {"status": "failed", "message": "payment canceled"};
       return errorResponse;
     }
