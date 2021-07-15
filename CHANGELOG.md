@@ -1,5 +1,9 @@
 ## 0.0.8
 
+- documentation
+
+## 0.0.7
+
 - iOS Integration
 - showLog option for debugging
 - dynamic hash generation via server
