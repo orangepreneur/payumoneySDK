@@ -37,9 +37,10 @@ public class SwiftPayumoneyProUnofficialPlugin: NSObject, FlutterPlugin, PayUChe
            let hashStringWithoutSalt = param[HashConstant.hashString] ?? ""
            // Or you can send below string hashName to your backend and send the sha512 back to us, do not calculate the hash at your client side, for security is reasons, hash has to be calculated at the server side
            let hashName = param[HashConstant.hashName] ?? ""
-        generateChecksum(url: url, string: hashStringWithoutSalt, onComplete: {(response)-> Void in
+        generateChecksum(url: self.url, string: hashStringWithoutSalt, onComplete: {(response)-> Void in
             let hashFetchedFromServer = response
             if(self.logs){
+                print("Checksum URL:" + self.url)
                 print("Generating Hash for: " + hashName)
                 print("String: " + hashStringWithoutSalt)
                 print("Hash from Server:" + hashFetchedFromServer)

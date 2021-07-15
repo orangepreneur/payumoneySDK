@@ -15,6 +15,7 @@ A new flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'Alamofire'
   s.dependency 'PayUIndia-CheckoutPro'
   s.platform = :ios, '10.0'
 
